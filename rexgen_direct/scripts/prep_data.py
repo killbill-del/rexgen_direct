@@ -23,7 +23,7 @@ def get_changed_bonds(rxn_smi):
              bond.GetEndAtom().GetProp('molAtomMapNumber')])
         if (nums[0] not in conserved_maps) and (nums[1] not in conserved_maps): continue # This is the one responsible for getting empty cbonds or mismatched (unbalanced reactions)
             # Get this to remove reactions with missing contributing atoms.
-        bonds_prev['{}~{}'.format(nums[0], nums[1])] = bond.GetBondTypeAsDouble()
+        bonds_prev['{}~{}'.format(nums[0], nums[1])] = bond.GetBondTypeAsDouble() # covers both the atoms of a bond.
     bonds_new = {}
     for bond in products.GetBonds():
         nums = sorted(
